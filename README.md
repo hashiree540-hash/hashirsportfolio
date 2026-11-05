@@ -1,4 +1,4 @@
-# hashir-s-portfolio
+# hasshir-s-portfolio
 
 # HASSHIR_ — AI Content Creator & Creative Developer Portfolio
 
