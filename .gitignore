@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Production build output
+# dist/
+
+# Test / Scratch files in root
+scratch/
+/*.png
+/*.mp4
+/*.html
+!index.html
+
+# Logs & OS files
+*.log
+.DS_Store
+Thumbs.db

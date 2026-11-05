@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HASSHIR_ — AI Content Creator & Creative Developer</title>
+  <meta name="description" content="Muhammad Hashir - B.Sc. Computer Science Graduate, AI Content Creator, and Creative Developer specializing in AI video production, digital marketing, prompt engineering, and vibe coding websites.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23000000'/><text x='50' y='64' font-size='42' font-family='sans-serif' font-weight='bold' fill='%23ffffff' text-anchor='middle'>H</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+  <!-- =================================================================
+       STICKY REVEAL NAVBAR (Slides into view when scrolling)
+       ================================================================= -->
+  <header class="sticky-navbar" id="stickyNavbar">
+    <div class="container">
+      <a href="#home" class="brand-logo">
+        HASSHIR<span class="brand-underscore">_</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about" class="nav-link">ABOUT</a></li>
+          <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+          <li><a href="#services" class="nav-link">SERVICES</a></li>
+          <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =================================================================
+         01. HERO SECTION (FULL SCREEN PURE JET BLACK #000000)
+         ================================================================= -->
+    <section class="hero-exact-section" id="home">
+      <!-- 01. Hero Top Native Navigation Header -->
+      <header class="hero-native-header">
+        <a href="#home" class="hero-native-brand" aria-label="HASSHIR_ Home">
+          HASSHIR<span class="brand-underscore">_</span>
+        </a>
+
+        <nav class="hero-native-nav" aria-label="Hero Navigation">
+          <ul class="hero-nav-links">
+            <li><a href="#about" class="hero-nav-link">ABOUT</a></li>
+            <li><a href="#projects" class="hero-nav-link">PROJECTS</a></li>
+            <li><a href="#services" class="hero-nav-link">SERVICES</a></li>
+            <li><a href="#contact" class="hero-nav-link">CONTACT</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- 02. Hero Main Interactive Stage -->
+      <div class="hero-exact-stage">
+        
+        <!-- Giant Bold Watermark Text (CREATOR) with Side Label (AI CONTENT) in Native CSS Typography -->
+        <div class="hero-watermark-wrap" aria-hidden="true">
+          <div class="hero-watermark-side">AI CONTENT</div>
+          <span class="hero-watermark-text">CREATOR</span>
+        </div>
+
+        <!-- Person Subject Image Cutout (Muhammad Hashir in Black Shirt) -->
+        <div class="hero-person-wrap">
+          <img src="assets/images/hashir-cutout.png" 
+               alt="Muhammad Hashir - AI Content Creator & Creative Developer in Black Shirt" 
+               class="hero-person-img">
+        </div>
+
+        <!-- Social Action Buttons (Instagram & WhatsApp) -->
+        <div class="hero-social-action-wrap">
+          <a href="https://www.instagram.com/hasshhir_/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="hero-circle-btn" 
+             title="Follow Muhammad Hashir on Instagram (@hasshhir_)" 
+             aria-label="Instagram">
+            <svg class="hero-circle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+
+          <a href="https://wa.me/917510885193" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="hero-circle-btn" 
+             title="Chat with Muhammad Hashir on WhatsApp (+91 751 088 5193)" 
+             aria-label="WhatsApp">
+            <svg class="hero-circle-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.52 3.48A11.93 11.93 0 0 0 12.06 0C5.46 0 .09 5.37.09 11.97c0 2.11.55 4.16 1.6 5.98L0 24l6.23-1.63a11.93 11.93 0 0 0 5.83 1.51h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-.1.25-1.25-1.25-3.52-5.93zM12.06 21.87h-.01a9.93 9.93 0 0 1-5.06-1.39l-.36-.21-3.76.99 1-3.66-.23-.38a9.92 9.92 0 0 1-1.52-5.25c0-5.48 4.46-9.94 9.95-9.94 2.65 0 5.15 1.03 7.03 2.91a9.88 9.88 0 0 1 2.91 7.03c0 5.49-4.46 9.94-9.96 9.94zm5.45-7.44c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.25-.6-.5-.52-.68-.53l-.58-.01c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- 03. Native Bottom Right Scroll Down Indicator -->
+        <a href="#about" class="hero-native-scroll-indicator" aria-label="Scroll Down to About Me">
+          <div class="hero-scroll-line-box">
+            <span class="hero-scroll-dot"></span>
+          </div>
+          <div class="hero-scroll-labels">
+            <span>SCROLL</span>
+            <span>DOWN</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- =================================================================
+         02. ABOUT ME SECTION (EXACT SAME DESIGN AS REFERENCE IMAGE 2)
+         ================================================================= -->
+    <section class="about-showcase-section" id="about">
+      
+      <!-- Native Pure HTML/CSS About Showcase (No Duplicate Navbar, No Purple Clouds) -->
+      <div class="container">
+        <div class="about-hero-showcase">
+          <div class="about-watermark-bg">ABOUT</div>
+          
+          <div class="about-hero-inner">
+            <h2 class="about-hero-title">ABOUT ME</h2>
+            
+            <div class="about-hero-tagline">
+              <span class="tagline-rule"></span>
+              <span class="tagline-text">A CREATIVE THINKER AND STORYTELLER</span>
+              <span class="tagline-rule"></span>
+            </div>
+            
+            <p class="about-hero-lead">
+              I’m a B.Sc. Computer Science graduate passionate about AI-powered creativity and digital experiences. I create cinematic AI videos, product advertisements, and engaging visual stories, and build modern websites using vibe coding and AI-powered development tools. I enjoy turning ideas into meaningful experiences through creativity and technology.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Pillars & Milestones -->
+      <div class="container about-extended-content">
+        
+        <!-- 4 Core Pillars Grid -->
+        <div class="about-pillars-grid">
+          <div class="pillar-glass-card">
+            <div class="pillar-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <div class="pillar-title">Creative Ideas</div>
+          </div>
+
+          <div class="pillar-glass-card">
+            <div class="pillar-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div class="pillar-title">Technical Solutions</div>
+          </div>
+
+          <div class="pillar-glass-card">
+            <div class="pillar-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 7l-7 5 7 5V7z"></path>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+            <div class="pillar-title">Visual Storytelling</div>
+          </div>
+
+          <div class="pillar-glass-card">
+            <div class="pillar-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <div class="pillar-title">Real-World Impact</div>
+          </div>
+        </div>
+
+        <!-- Education & Milestones Card Matching Reference Image 1 -->
+        <div class="about-milestone-bar">
+          <div class="milestone-edu-item">
+            <div class="milestone-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <div>
+              <div class="milestone-year">2022 - 2025</div>
+              <div class="milestone-degree">B.Sc. Computer Science</div>
+              <div class="milestone-college">K.R. Sree Narayana College Valanchery</div>
+            </div>
+          </div>
+
+          <div class="milestone-action-col">
+            <button class="btn-primary-glow btn-open-resume" type="button" aria-label="View Muhammad Hashir Resume">
+              <span>VIEW RESUME</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =================================================================
+         03. MY SERVICES SECTION (Prompt 6 Services)
+         ================================================================= -->
+    <section class="section-padding services-section" id="services">
+      <div class="watermark-backdrop">SERVICES</div>
+
+      <div class="container">
+        
+        <div class="section-header-centered">
+          <div class="section-eyebrow">My Services</div>
+          <h2 class="section-title">
+            Turning Ideas Into
+            <span class="section-title-italic">Engaging Experiences</span>
+          </h2>
+          <p class="section-subtitle">
+            Turning ideas into engaging digital experiences with AI. From cinematic commercials to responsive web applications.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          
+          <!-- 01. AI Video Creation -->
+          <div class="service-card-ref">
+            <div class="service-ref-header">
+              <h3 class="service-ref-title">AI Video Creation</h3>
+              <div class="service-ref-desc-wrapper">
+                <p class="service-ref-desc">
+                  Creating cinematic AI videos, brand stories, and promotional reels that capture emotion, dynamic camera motion, and vivid realism.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-ref-visual-stage">
+              <div class="service-ref-glow"></div>
+              <video class="service-ref-visual service-ref-video-visual" 
+                     src="assets/videos/ai-video-creation.mp4" 
+                     autoplay muted loop playsinline preload="auto"></video>
+            </div>
+
+            <div class="service-ref-footer">
+              <span class="service-ref-tag"><strong class="service-ref-num-prefix">01 /</strong> Seedance · Wan 3.0 · Kling AI</span>
+              <div class="service-ref-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02. AI Image Generation -->
+          <div class="service-card-ref">
+            <div class="service-ref-header">
+              <h3 class="service-ref-title">AI Image Generation</h3>
+              <div class="service-ref-desc-wrapper">
+                <p class="service-ref-desc">
+                  Generating realistic product visuals, creative concepts, and campaign images with pixel-perfect lighting and textures.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-ref-visual-stage">
+              <div class="service-ref-glow"></div>
+              <img src="assets/images/service-02-image.jpg" alt="AI Image Generation Luxury Gold Watch Visual" class="service-ref-visual">
+            </div>
+
+            <div class="service-ref-footer">
+              <span class="service-ref-tag"><strong class="service-ref-num-prefix">02 /</strong> Higgsfield · Nano Banana</span>
+              <div class="service-ref-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03. AI Advertisements -->
+          <div class="service-card-ref">
+            <div class="service-ref-header">
+              <h3 class="service-ref-title">AI Advertisements</h3>
+              <div class="service-ref-desc-wrapper">
+                <p class="service-ref-desc">
+                  Producing AI-powered product commercials and attention-grabbing brand ads engineered to maximize conversions and engagement.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-ref-visual-stage">
+              <div class="service-ref-glow"></div>
+              <img src="assets/images/service-03-ads.jpg" alt="AI Advertisements 3D Liquid Chrome Visual" class="service-ref-visual">
+            </div>
+
+            <div class="service-ref-footer">
+              <span class="service-ref-tag"><strong class="service-ref-num-prefix">03 /</strong> Meta Ads · CapCut Pro</span>
+              <div class="service-ref-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04. Website Development -->
+          <div class="service-card-ref">
+            <div class="service-ref-header">
+              <h3 class="service-ref-title">Website Development</h3>
+              <div class="service-ref-desc-wrapper">
+                <p class="service-ref-desc">
+                  Building responsive websites and landing pages using vibe coding tools, turning creative concepts into smooth, blazing-fast web experiences.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-ref-visual-stage">
+              <div class="service-ref-glow"></div>
+              <img src="assets/images/service-04-web.jpg" alt="Website Development 3D Code Visual" class="service-ref-visual">
+            </div>
+
+            <div class="service-ref-footer">
+              <span class="service-ref-tag"><strong class="service-ref-num-prefix">04 /</strong> Google Antigravity · v0 · Lovable</span>
+              <div class="service-ref-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05. Creative Storytelling -->
+          <div class="service-card-ref">
+            <div class="service-ref-header">
+              <h3 class="service-ref-title">Creative Storytelling</h3>
+              <div class="service-ref-desc-wrapper">
+                <p class="service-ref-desc">
+                  Crafting engaging visual narratives that bring ideas to life and connect with audiences emotionally across social and digital channels.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-ref-visual-stage">
+              <div class="service-ref-glow"></div>
+              <img src="assets/images/service-05-story.jpg" alt="Creative Storytelling 3D Orb Visual" class="service-ref-visual">
+            </div>
+
+            <div class="service-ref-footer">
+              <span class="service-ref-tag"><strong class="service-ref-num-prefix">05 /</strong> Narrative Design · Visual Flow</span>
+              <div class="service-ref-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06. Prompt Engineering -->
+          <div class="service-card-ref">
+            <div class="service-ref-header">
+              <h3 class="service-ref-title">Prompt Engineering</h3>
+              <div class="service-ref-desc-wrapper">
+                <p class="service-ref-desc">
+                  Crafting detailed prompts for consistent, high-quality AI images and videos with precise control over seed, styling, motion, and fidelity.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-ref-visual-stage">
+              <div class="service-ref-glow"></div>
+              <img src="assets/images/service-06-prompt.jpg" alt="Prompt Engineering 3D Neural Core Visual" class="service-ref-visual">
+            </div>
+
+            <div class="service-ref-footer">
+              <span class="service-ref-tag"><strong class="service-ref-num-prefix">06 /</strong> Latent Diffusion · Multi-Pass</span>
+              <div class="service-ref-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================
+         04. FEATURED PROJECTS SECTION
+         ================================================================= -->
+    <section class="section-padding projects-section" id="projects">
+      <div class="watermark-backdrop">PROJECTS</div>
+
+      <div class="container">
+        
+        <div class="section-header-centered">
+          <div class="section-eyebrow">Featured Projects</div>
+          <h2 class="section-title">
+            A Showcase of
+            <span class="section-title-italic">Creative Work</span>
+          </h2>
+          <p class="section-subtitle">
+            A showcase of my creative work, combining AI, storytelling, and technology to transform ideas into engaging digital experiences.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="projects-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="video">AI Videos</button>
+          <button class="filter-btn" data-filter="ads">AI Advertisements</button>
+          <button class="filter-btn" data-filter="web">Vibe Coded Web</button>
+          <button class="filter-btn" data-filter="prompt">Prompt Engineering</button>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: AI Commercial -->
+          <div class="project-card" data-category="ads video" 
+               data-video="assets/videos/luminary-obsidian.mp4"
+               data-full-desc="Cinematic commercial with fluid dynamics, realistic amber reflections, and emotional sound design."
+               data-prompt="Hyper-realistic perfume bottle made of obsidian crystal and amber liquid, surrounded by floating velvet petals, anamorphic silver rim lighting, 8k resolution, macro slow-motion fluid dynamics.">
+            <div class="project-media-wrap">
+              <video class="project-thumbnail project-video-thumb" 
+                     src="assets/videos/luminary-obsidian.mp4" 
+                     poster="assets/images/service-ads.jpg"
+                     autoplay muted loop playsinline preload="metadata">
+              </video>
+              <span class="project-badge-cat">AI Commercial</span>
+              <div class="project-play-overlay open-project-modal" title="View Breakdown & Watch Video">
+                <div class="play-circle-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Luminary Obsidian — Fragrance Ad</h3>
+                <p class="project-desc">Cinematic commercial with fluid dynamics, realistic amber reflections, and emotional sound design.</p>
+                <div class="project-tags">
+                  <span class="project-tag">Kling AI</span>
+                  <span class="project-tag">CapCut Pro</span>
+                  <span class="project-tag">Meta Ads</span>
+                </div>
+              </div>
+              <div class="project-footer-action">
+                <button class="btn-view-details open-project-modal">
+                  <span>View Breakdown</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Luxury Watch Commercial (User Video) -->
+          <div class="project-card" data-category="ads video" 
+               data-video="assets/videos/timeless-elegance.mp4"
+               data-full-desc="A cinematic product showcase highlighting precision, craftsmanship, and luxury through stunning close-up shots, dramatic lighting, and smooth camera movements."
+               data-prompt="Macro cinematic showcase of a high-complication mechanical timepiece, obsidian dial with rose-gold accents, tourbillon escapement rotating in slow motion, studio rim light tracing polished sapphire crystal, 8k resolution, photorealistic luxury advertising.">
+            <div class="project-media-wrap">
+              <video class="project-thumbnail project-video-thumb" 
+                     src="assets/videos/timeless-elegance.mp4" 
+                     autoplay muted loop playsinline preload="metadata">
+              </video>
+              <span class="project-badge-cat">AI Commercial</span>
+              <div class="project-play-overlay open-project-modal" title="View Breakdown & Watch Video">
+                <div class="play-circle-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Timeless Elegance — Luxury Watch Commercial</h3>
+                <p class="project-desc">A cinematic product showcase highlighting precision, craftsmanship, and luxury through stunning close-up shots, dramatic lighting, and smooth camera movements.</p>
+                <div class="project-tags">
+                  <span class="project-tag">AI Video Creation</span>
+                  <span class="project-tag">Product Advertising</span>
+                  <span class="project-tag">Cinematic Storytelling</span>
+                </div>
+              </div>
+              <div class="project-footer-action">
+                <button class="btn-view-details open-project-modal">
+                  <span>View Breakdown</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Cinematic AI Video -->
+          <div class="project-card" data-category="video prompt"
+               data-full-desc="A cinematic science-fiction teaser trailer exploring artificial superintelligence and neural interfaces. Directed through Wan 3.0 and Higgsfield camera controls with custom sound design."
+               data-prompt="Futuristic Cyberpunk skyline at twilight, platinum and cyan holographic ribbons, cinematic anamorphic bokeh, character in dark trenchcoat looking at floating neural sphere, 8k Unreal Engine 5 render style.">
+            <div class="project-media-wrap">
+              <img src="assets/images/service-video.jpg" alt="Neural Horizons Sci-Fi Film" class="project-thumbnail">
+              <span class="project-badge-cat">AI Video</span>
+              <div class="project-play-overlay open-project-modal">
+                <div class="play-circle-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Neural Horizons — Cinematic Trailer</h3>
+                <p class="project-desc">A deep narrative visual story about AI and humanity with seamless camera motion and lighting.</p>
+                <div class="project-tags">
+                  <span class="project-tag">Wan 3.0</span>
+                  <span class="project-tag">Higgsfield</span>
+                  <span class="project-tag">Storytelling</span>
+                </div>
+              </div>
+              <div class="project-footer-action">
+                <button class="btn-view-details open-project-modal">
+                  <span>View Breakdown</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Vibe Coded Website -->
+          <div class="project-card" data-category="web"
+               data-full-desc="A responsive luxury brand showcase platform built through vibe coding with Google Antigravity, React, and Tailwind CSS. Features dynamic ambient lighting and interactive 3D product previews."
+               data-prompt="Vibe coded architecture: React.js SPA, smooth framer-motion transitions, dark obsidian glassmorphism, responsive CSS grid, zero CLS performance.">
+            <div class="project-media-wrap">
+              <img src="assets/images/service-web.jpg" alt="Aether Digital Web Experience" class="project-thumbnail">
+              <span class="project-badge-cat">Vibe Coding</span>
+              <div class="project-play-overlay open-project-modal">
+                <div class="play-circle-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Aether — Luxury Experience Portal</h3>
+                <p class="project-desc">Modern responsive web application built with vibe coding tools, sleek glass cards, and high-speed delivery.</p>
+                <div class="project-tags">
+                  <span class="project-tag">Google Antigravity</span>
+                  <span class="project-tag">v0</span>
+                  <span class="project-tag">React</span>
+                </div>
+              </div>
+              <div class="project-footer-action">
+                <button class="btn-view-details open-project-modal">
+                  <span>View Breakdown</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: AI Brand Campaign -->
+          <div class="project-card" data-category="ads prompt"
+               data-full-desc="A multi-asset social media campaign for a premium automotive brand. Generated 12 high-converting video variations and 30 photo key visuals using Nano Banana and Kling AI."
+               data-prompt="Sleek electric hypercar cruising through a neon-lit mountain pass at dusk, wet asphalt reflecting twilight sky, ray-traced reflections, motion blur, photorealistic 8k commercial shoot.">
+            <div class="project-media-wrap">
+              <img src="assets/images/service-creative.jpg" alt="Apex Pulse Automotive Ad" class="project-thumbnail">
+              <span class="project-badge-cat">Brand Campaign</span>
+              <div class="project-play-overlay open-project-modal">
+                <div class="play-circle-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">Apex Pulse — Automotive Ad</h3>
+                <p class="project-desc">High-energy commercial reel engineered for Meta Ads with striking automotive realism.</p>
+                <div class="project-tags">
+                  <span class="project-tag">OmniFlash</span>
+                  <span class="project-tag">Nano Banana</span>
+                  <span class="project-tag">Meta Ads</span>
+                </div>
+              </div>
+              <div class="project-footer-action">
+                <button class="btn-view-details open-project-modal">
+                  <span>View Breakdown</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Interactive Web App -->
+          <div class="project-card" data-category="web prompt"
+               data-full-desc="An AI prompt generation and visual staging web application created with Lovable and Google Antigravity. Features instant template preview and token analysis."
+               data-prompt="Frontend engineering: Dynamic prompt builder with real-time parameter tuning, dark obsidian neon styling, and copy-to-clipboard workflows.">
+            <div class="project-media-wrap">
+              <img src="assets/images/service-web.jpg" alt="PromptCraft AI Web Tool" class="project-thumbnail">
+              <span class="project-badge-cat">Vibe Coded Web</span>
+              <div class="project-play-overlay open-project-modal">
+                <div class="play-circle-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <h3 class="project-title">PromptCraft — Creative AI Studio</h3>
+                <p class="project-desc">Interactive web platform for generating and managing consistent AI prompt presets.</p>
+                <div class="project-tags">
+                  <span class="project-tag">Lovable</span>
+                  <span class="project-tag">Antigravity</span>
+                  <span class="project-tag">JavaScript</span>
+                </div>
+              </div>
+              <div class="project-footer-action">
+                <button class="btn-view-details open-project-modal">
+                  <span>View Breakdown</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================
+         06. WHAT PEOPLE SAY (TESTIMONIALS SECTION)
+         ================================================================= -->
+    <section class="section-padding testimonials-section" id="testimonials">
+      <div class="watermark-backdrop">REVIEWS</div>
+
+      <div class="container">
+        
+        <div class="section-header-centered">
+          <div class="section-eyebrow">What People Say</div>
+          <h2 class="section-title">
+            Meaningful Connections &amp;
+            <span class="section-title-italic">Client Trust</span>
+          </h2>
+          <p class="section-subtitle">
+            Building meaningful connections through creativity, collaboration, and technology. A few words about the experience of working together on creative projects and digital solutions.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <!-- Review 1 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-quote">
+                Hashir brought our brand concept to life with cinematic AI visuals that completely blew away our expectations. The attention to lighting, realism, and brand feeling was identical to a top-tier studio production.
+              </p>
+            </div>
+            <div class="testimonial-author-row">
+              <div class="author-avatar">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Sarah Jenkins">
+              </div>
+              <div>
+                <div class="author-name">Sarah Jenkins</div>
+                <div class="author-role">Creative Director, Horizon Media</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-quote">
+                The website Hashir built using vibe coding was lightning fast, gorgeously styled with that modern monochrome obsidian luxury aesthetic, and boosted our ad conversion rate by over 42%. Truly top-tier work!
+              </p>
+            </div>
+            <div class="testimonial-author-row">
+              <div class="author-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces" alt="Alex Thorne">
+              </div>
+              <div>
+                <div class="author-name">Alex Thorne</div>
+                <div class="author-role">Founder, NeonPulse Tech</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-quote">
+                His mastery of prompt engineering and AI video generation tools like Kling and Wan 3.0 is world-class. Hashir delivers on time, communicates with clarity, and elevates every single creative idea.
+              </p>
+            </div>
+            <div class="testimonial-author-row">
+              <div class="author-avatar">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces" alt="Priya Nair">
+              </div>
+              <div>
+                <div class="author-name">Priya Nair</div>
+                <div class="author-role">Marketing Head, Aiora Brand Labs</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================
+         07. CONTACT SECTION (Instagram, Email, Phone no)
+         ================================================================= -->
+    <section class="section-padding contact-section" id="contact">
+      <div class="watermark-backdrop">CONTACT</div>
+
+      <div class="container">
+        
+        <div class="section-header-centered">
+          <div class="section-eyebrow">Get In Touch</div>
+          <h2 class="section-title">
+            Let's Create Something
+            <span class="section-title-italic">Extraordinary</span>
+          </h2>
+          <p class="section-subtitle">
+            Have a creative project in mind, need cinematic AI content, or want to collaborate on modern web development? Reach out directly.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Contact Cards Left -->
+          <div class="contact-info-col">
+            
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/hasshhir_/" target="_blank" rel="noopener noreferrer" class="contact-info-card">
+              <div class="contact-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-card-title">Instagram</div>
+                <div class="contact-card-value">@hasshhir_</div>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <div class="contact-info-card copy-trigger" data-copy="hashir.ai.creates@gmail.com" style="cursor: pointer;">
+              <div class="contact-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-card-title">Email (Click to copy)</div>
+                <div class="contact-card-value">hashir.ai.creates@gmail.com</div>
+              </div>
+            </div>
+
+            <!-- WhatsApp / Phone -->
+            <a href="https://wa.me/917510885193" target="_blank" rel="noopener noreferrer" class="contact-info-card">
+              <div class="contact-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.52 3.48A11.93 11.93 0 0 0 12.06 0C5.46 0 .09 5.37.09 11.97c0 2.11.55 4.16 1.6 5.98L0 24l6.23-1.63a11.93 11.93 0 0 0 5.83 1.51h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-.1.25-1.25-1.25-3.52-5.93zM12.06 21.87h-.01a9.93 9.93 0 0 1-5.06-1.39l-.36-.21-3.76.99 1-3.66-.23-.38a9.92 9.92 0 0 1-1.52-5.25c0-5.48 4.46-9.94 9.95-9.94 2.65 0 5.15 1.03 7.03 2.91a9.88 9.88 0 0 1 2.91 7.03c0 5.49-4.46 9.94-9.96 9.94zm5.45-7.44c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.25-.25-.6-.5-.52-.68-.53l-.58-.01c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-card-title">WhatsApp / Phone</div>
+                <div class="contact-card-value">+91 751 088 5193</div>
+              </div>
+            </a>
+
+            <!-- Location -->
+            <div class="contact-info-card">
+              <div class="contact-card-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-card-title">Location</div>
+                <div class="contact-card-value">Kerala, India (Available Worldwide)</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Contact Form Right -->
+          <div class="contact-form-card">
+            <form id="contactForm">
+              <div class="form-group">
+                <label class="form-label" for="formName">Your Name</label>
+                <input type="text" id="formName" class="form-input" placeholder="e.g. Alexander Vance" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formEmail">Email Address</label>
+                <input type="email" id="formEmail" class="form-input" placeholder="e.g. alexander@brand.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formService">Interested In</label>
+                <select id="formService" class="form-select">
+                  <option value="AI Video Creation">AI Video Creation / Cinematic Commercials</option>
+                  <option value="AI Image Generation">AI Image Generation &amp; Key Visuals</option>
+                  <option value="AI Advertisements">Product Advertising &amp; Meta Ads</option>
+                  <option value="Website Development">Website Development &amp; Vibe Coding</option>
+                  <option value="Prompt Engineering">Prompt Engineering &amp; Creative Direction</option>
+                  <option value="General Collaboration">General Inquiries / Collaboration</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formMessage">Your Message</label>
+                <textarea id="formMessage" class="form-textarea" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit-form">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =================================================================
+       FOOTER
+       ================================================================= -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        HASSHIR<span class="brand-underscore">_</span>
+      </div>
+
+      <div class="footer-copy">
+        &copy; 2026 Muhammad Hashir. All rights reserved. Crafted with AI &amp; Vibe Coding.
+      </div>
+
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="#home" class="btn-secondary-outline" style="padding: 0.4rem 1rem; font-size: 0.78rem;">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =================================================================
+       PROJECT DETAILS MODAL
+       ================================================================= -->
+  <div class="modal-backdrop" id="projectModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div style="margin-bottom: 1.2rem;">
+        <span class="project-badge-cat" id="modalCategory">AI Commercial</span>
+      </div>
+
+      <h3 id="modalTitle" style="font-family: var(--font-display); font-size: 1.8rem; color: #fff; margin-bottom: 1rem;">Project Details</h3>
+
+      <div class="modal-media-box" style="width: 100%; border-radius: 16px; overflow: hidden; margin-bottom: 1.4rem; border: 1px solid rgba(255,255,255,0.15); background: #000000; position: relative; display: flex; align-items: center; justify-content: center;">
+        <img id="modalImage" src="" alt="Project Visual" style="width: 100%; height: 260px; object-fit: cover; display: none;">
+        <video id="modalVideo" src="" controls playsinline style="width: 100%; max-height: 420px; display: none; object-fit: contain; background: #000000; outline: none;"></video>
+      </div>
+
+      <p id="modalDescription" style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.4rem;"></p>
+
+      <div style="background: rgba(18,18,24,0.9); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 1.1rem; font-family: var(--font-mono); font-size: 0.82rem; color: #e2e8f0; line-height: 1.6; margin-bottom: 1.4rem;" id="modalPrompt">
+      </div>
+
+      <div class="project-tags" id="modalStack"></div>
+    </div>
+  </div>
+
+  <!-- =================================================================
+       RESUME MODAL
+       ================================================================= -->
+  <div class="modal-backdrop" id="resumeModal">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <button class="modal-close-btn" id="resumeCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 1.8rem;">
+        <h3 style="font-family: var(--font-display); font-size: 1.9rem; color: #fff;">Muhammad Hashir</h3>
+        <p style="font-size: 0.88rem; color: var(--accent-neon); font-family: var(--font-mono); letter-spacing: 1px; text-transform: uppercase;">AI Content Creator &amp; Vibe Coder · B.Sc. Computer Science</p>
+      </div>
+
+      <div style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.85rem; color: var(--accent-neon); text-transform: uppercase; font-family: var(--font-mono); letter-spacing: 1.5px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 0.4rem; margin-bottom: 0.8rem;">Education</h4>
+        <div style="display: flex; justify-content: space-between;">
+          <strong>B.Sc. Computer Science</strong>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #ffffff;">2022 – 2025</span>
+        </div>
+        <p style="color: #94a3b8; font-size: 0.85rem;">K.R. Sree Narayana College Valanchery</p>
+      </div>
+
+      <div style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.85rem; color: var(--accent-neon); text-transform: uppercase; font-family: var(--font-mono); letter-spacing: 1.5px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 0.4rem; margin-bottom: 0.8rem;">Core Tools &amp; Technologies</h4>
+        <p style="font-size: 0.85rem; color: #d1d5db;">
+          <strong>AI Video &amp; Image:</strong> OmniFlash, Higgsfield, Kling AI, Wan 3.0, Nano Banana<br>
+          <strong>AI &amp; Vibe Coding:</strong> ChatGPT, Lovable, Google Antigravity, v0<br>
+          <strong>Design &amp; Video Editing:</strong> Canva, CapCut Pro<br>
+          <strong>Digital Advertising:</strong> Meta Ads
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+        <button onclick="window.print()" class="btn-primary-glow" style="cursor: pointer; border: none;">
+          <span>Print / Save PDF</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toastNotice">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastMessage">Inquiry submitted successfully!</span>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
