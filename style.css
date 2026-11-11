@@ -683,83 +683,6 @@ body {
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
 }
 
-/* --- HERO RIGHT FLOATING STATS BADGES (Video Reference Style) --- */
-.hero-right-stats {
-  position: absolute;
-  right: clamp(6.2rem, 8.5vw, 9.2rem);
-  bottom: clamp(2.5rem, 6.5vh, 5.5rem);
-  z-index: 25;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.75rem;
-  pointer-events: auto;
-  max-width: 280px;
-  will-change: transform, opacity;
-}
-
-.hero-stat-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  background: rgba(14, 14, 20, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
-  padding: 0.65rem 1.15rem;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hero-stat-pill:hover {
-  transform: translateY(-3px) scale(1.02);
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 255, 255, 0.18);
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 1.8vw, 1.8rem);
-  font-weight: 900;
-  color: #ffffff;
-  line-height: 1;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-}
-
-.stat-text {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #cbd5e1;
-  letter-spacing: 0.8px;
-  line-height: 1.25;
-  text-transform: uppercase;
-}
-
-.hero-quote-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(14, 14, 20, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 0.55rem 0.95rem;
-  font-family: var(--font-sans);
-  font-size: 0.74rem;
-  color: #cbd5e1;
-  font-style: italic;
-  line-height: 1.35;
-  text-align: right;
-  backdrop-filter: blur(10px);
-}
-
-.quote-star {
-  color: #ffffff;
-  font-style: normal;
-  font-size: 0.85rem;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
-}
-
 /* --- C. PERSON SUBJECT CUTOUT --- */
 .hero-person-wrap {
   position: relative;
@@ -896,14 +819,6 @@ body {
 }
 
 /* Responsive Scaling for Tablets and Mobile */
-@media (max-width: 1200px) {
-  .hero-right-stats {
-    right: 5.5rem;
-    transform: scale(0.9);
-    transform-origin: bottom right;
-  }
-}
-
 @media (max-width: 900px) {
   .hero-social-dock {
     right: 1.5rem;
@@ -929,9 +844,6 @@ body {
     top: -12px;
     left: 20px;
     font-size: clamp(0.85rem, 2.2vw, 1.4rem);
-  }
-  .hero-right-stats {
-    display: none;
   }
   .hero-left-intro {
     bottom: 1.8rem;

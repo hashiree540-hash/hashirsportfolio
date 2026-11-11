@@ -106,8 +106,6 @@ function initApp() {
     const heroPillSparkle = document.querySelector('.hero-pill-sparkle');
     const heroPillText = document.querySelector('.hero-pill-text');
     const heroBullets = document.querySelectorAll('.hero-intro-bullets .bullet-item');
-    const heroStats = document.querySelectorAll('.hero-stat-pill');
-    const heroQuote = document.querySelector('.hero-quote-pill');
     const heroDockBtns = document.querySelectorAll('.hero-dock-btn, .hero-dock-status');
 
     // Split pill text into letters for the reference video typing effect
@@ -131,8 +129,6 @@ function initApp() {
     if (heroPillSparkle) gsap.set(heroPillSparkle, { scale: 0, opacity: 0 });
     if (pillChars.length) gsap.set(pillChars, { x: -10, opacity: 0, filter: 'blur(3px)' });
     if (heroBullets.length) gsap.set(heroBullets, { x: -22, opacity: 0, filter: 'blur(4px)' });
-    if (heroStats.length) gsap.set(heroStats, { x: 45, opacity: 0, filter: 'blur(4px)' });
-    if (heroQuote) gsap.set(heroQuote, { x: 45, opacity: 0, filter: 'blur(4px)' });
     if (heroDockBtns.length) gsap.set(heroDockBtns, { x: 35, opacity: 0 });
 
     heroChars.forEach(char => {
@@ -281,38 +277,7 @@ function initApp() {
       }, 7.2);
     }
 
-    // 8. Right Floating Stats Badges (enters sequentially at 8.7s, 9.4s, 10.1s)
-    if (heroStats.length > 0) {
-      masterTl.to(heroStats[0], {
-        x: 0,
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 0.8,
-        ease: 'power2.out'
-      }, 8.7);
-    }
-
-    if (heroStats.length > 1) {
-      masterTl.to(heroStats[1], {
-        x: 0,
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 0.8,
-        ease: 'power2.out'
-      }, 9.4);
-    }
-
-    if (heroQuote) {
-      masterTl.to(heroQuote, {
-        x: 0,
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 0.85,
-        ease: 'power2.out'
-      }, 10.1);
-    }
-
-    // 9. Social Dock Buttons Cascade (starts at 9.0s)
+    // 8. Social Dock Buttons Cascade (starts at 8.6s)
     if (heroDockBtns.length) {
       masterTl.to(heroDockBtns, {
         x: 0,
@@ -320,7 +285,7 @@ function initApp() {
         duration: 0.65,
         stagger: 0.12,
         ease: 'back.out(1.5)'
-      }, 9.0);
+      }, 8.6);
     }
 
     // Interactive Mouse Parallax (desktop viewports > 900px)
