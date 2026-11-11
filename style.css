@@ -7,6 +7,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Oswald:ital,wght@1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
 
 @font-face {
+  font-family: 'Moderniz';
+  src: url('./assets/fonts/Moderniz-0vZDo.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Abrasion';
   src: url('./assets/fonts/Abrasion-6YZd1.otf') format('opentype'),
        url('./assets/fonts/Abrasion-ywmZV.ttf') format('truetype');
@@ -98,7 +106,7 @@
   --text-watermark: rgba(255, 255, 255, 0.04);
   
   /* Typography */
-  --font-display: 'Abrasion', 'Syne', sans-serif;
+  --font-display: 'Moderniz', 'Abrasion', sans-serif;
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-signature: 'Caveat', cursive;
   --font-mono: 'Space Grotesk', monospace;
