@@ -32,7 +32,7 @@ function initApp() {
   window.lenis = lenis;
 
   // -----------------------------------------------------------------
-  // 2. Sticky Reveal Navbar on Scroll
+  // 2. Sticky Reveal Navbar on Scroll & Hero Replay Tracking
   // -----------------------------------------------------------------
   const stickyNavbar = document.getElementById('stickyNavbar');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -40,13 +40,25 @@ function initApp() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
 
+  let hasLeftHero = false;
+  let isNavigatingToHome = false;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 150) {
+    const scrollY = window.scrollY;
+    if (scrollY > 150) {
       stickyNavbar?.classList.add('visible');
     } else {
       stickyNavbar?.classList.remove('visible');
     }
     highlightCurrentSection();
+
+    // Replay hero animation whenever user returns/scrolls back to homepage
+    if (scrollY > 350) {
+      hasLeftHero = true;
+    } else if (scrollY <= 80 && hasLeftHero && !isNavigatingToHome) {
+      hasLeftHero = false;
+      playHeroAnimation();
+    }
   });
 
   function highlightCurrentSection() {
@@ -86,19 +98,85 @@ function initApp() {
       if (href && href !== '#' && document.querySelector(href)) {
         e.preventDefault();
         const target = document.querySelector(href);
-        lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+        if (href === '#home') {
+          // Re-entering hero via navigation click (brand logo, back-to-top, etc.)
+          if (window.scrollY > 80) {
+            isNavigatingToHome = true;
+            hasLeftHero = false;
+            lenis.scrollTo(0, {
+              duration: 1.1,
+              onComplete: () => {
+                isNavigatingToHome = false;
+                playHeroAnimation(true);
+              }
+            });
+          } else {
+            // Already at top, replay if requested
+            playHeroAnimation(true);
+          }
+        } else {
+          hasLeftHero = true;
+          lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+        }
       }
     });
   });
 
+  // Replay hero entrance on browser back/forward history navigation or tab restore
+  window.addEventListener('popstate', () => {
+    if (!window.location.hash || window.location.hash === '#home') {
+      lenis.scrollTo(0, {
+        duration: 0.8,
+        onComplete: () => {
+          hasLeftHero = false;
+          playHeroAnimation(true);
+        }
+      });
+    }
+  });
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted && window.scrollY < 200) {
+      hasLeftHero = false;
+      playHeroAnimation(true);
+    }
+  });
+
   // -----------------------------------------------------------------
   // 3. Hero Entrance Master Timeline (Exact Reference Video Match)
+  // Replays completely on every new homepage entry/revisit/refresh
   // -----------------------------------------------------------------
-  function initHeroAnimations() {
+  let heroMasterTl = null;
+  let lastHeroPlayTime = 0;
+
+  function playHeroAnimation(force = false) {
+    const now = Date.now();
+    // Debounce to prevent rapid duplicate calls within 1.2s unless explicitly forced
+    if (!force && (now - lastHeroPlayTime < 1200)) {
+      return;
+    }
+    lastHeroPlayTime = now;
+
+    // Respect reduced-motion accessibility preference (Requirement 10)
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (heroMasterTl) heroMasterTl.kill();
+      gsap.set(['.hero-native-header', '.hero-person-wrap', '.hero-script-greeting', 
+                '.name-char', '.hero-intro-pill', '.hero-pill-sparkle', '.pill-char', 
+                '.bullet-item', '.hero-dock-btn', '.hero-dock-status'], {
+        opacity: 1, x: 0, y: 0, scale: 1, filter: 'none'
+      });
+      document.querySelectorAll('.hero-char').forEach(char => {
+        const stroke = char.querySelector('.hero-char-stroke');
+        const fill = char.querySelector('.hero-char-fill');
+        if (stroke) gsap.set(stroke, { opacity: 0.45, scale: 1 });
+        if (fill) gsap.set(fill, { opacity: 1, filter: 'none' });
+      });
+      return;
+    }
+
     const heroChars = document.querySelectorAll('.hero-char');
     const heroCutout = document.querySelector('.hero-person-wrap');
     const heroNav = document.querySelector('.hero-native-header');
-    const heroSideTag = document.querySelector('.hero-watermark-side');
     const heroGreeting = document.querySelector('.hero-script-greeting');
     const nameCharsL1 = document.querySelectorAll('.name-line-1 .name-char');
     const nameCharsL2 = document.querySelectorAll('.name-line-2 .name-char');
@@ -108,7 +186,7 @@ function initApp() {
     const heroBullets = document.querySelectorAll('.hero-intro-bullets .bullet-item');
     const heroDockBtns = document.querySelectorAll('.hero-dock-btn, .hero-dock-status');
 
-    // Split pill text into letters for the reference video typing effect
+    // Split pill text into letters for typing effect (performed once)
     if (heroPillText && !heroPillText.dataset.split) {
       heroPillText.dataset.split = 'true';
       const text = heroPillText.textContent.trim();
@@ -118,9 +196,16 @@ function initApp() {
     }
     const pillChars = document.querySelectorAll('.pill-char');
 
-    // Initial state setup
+    // Cancel existing timeline and in-flight tweens on hero elements to prevent flicker/overlap
+    if (heroMasterTl) {
+      heroMasterTl.kill();
+    }
+    gsap.killTweensOf(['.hero-native-header', '.hero-person-wrap', '.hero-script-greeting',
+      '.name-char', '.hero-intro-pill', '.hero-pill-sparkle', '.pill-char',
+      '.bullet-item', '.hero-dock-btn', '.hero-dock-status', '.hero-char-stroke', '.hero-char-fill']);
+
+    // Reset initial states cleanly
     if (heroNav) gsap.set(heroNav, { y: -20, opacity: 0 });
-    if (heroSideTag) gsap.set(heroSideTag, { x: -25, opacity: 0 });
     if (heroCutout) gsap.set(heroCutout, { y: 55, scale: 0.95, opacity: 0 });
     if (heroGreeting) gsap.set(heroGreeting, { x: -24, opacity: 0, filter: 'blur(5px)' });
     if (nameCharsL1.length) gsap.set(nameCharsL1, { x: -14, opacity: 0, filter: 'blur(4px)' });
@@ -135,15 +220,14 @@ function initApp() {
       const stroke = char.querySelector('.hero-char-stroke');
       const fill = char.querySelector('.hero-char-fill');
       if (stroke) gsap.set(stroke, { opacity: 0, scale: 0.98 });
-      if (fill) gsap.set(fill, { opacity: 0 });
+      if (fill) gsap.set(fill, { opacity: 0, filter: 'none' });
     });
 
     // Master Timeline matching reference video sequence & speed
-    const masterTl = gsap.timeline({ delay: 0.1 });
+    heroMasterTl = gsap.timeline({ delay: 0.1 });
 
-    // 1. Top Navbar and side tag fade in softly
-    if (heroNav) masterTl.to(heroNav, { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.4);
-    if (heroSideTag) masterTl.to(heroSideTag, { x: 0, opacity: 0.9, duration: 0.9, ease: 'power2.out' }, 0.6);
+    // 1. Top Navbar fade in softly (0.4s)
+    if (heroNav) heroMasterTl.to(heroNav, { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.4);
 
     // 2. CREATOR Typography Left-to-Right Letter Tracing (0.0s - 2.7s in video)
     // 7 letters: C R E A T O R. Stagger ~0.34s per letter for exact reference video pace
@@ -154,7 +238,7 @@ function initApp() {
       const letterStartTime = 0.1 + (idx * letterSpacing);
 
       if (stroke) {
-        masterTl.to(stroke, {
+        heroMasterTl.to(stroke, {
           opacity: 1,
           scale: 1,
           duration: 0.38,
@@ -163,7 +247,7 @@ function initApp() {
       }
 
       if (fill) {
-        masterTl.to(fill, {
+        heroMasterTl.to(fill, {
           opacity: 1,
           duration: 0.45,
           ease: 'power2.out'
@@ -171,7 +255,7 @@ function initApp() {
       }
 
       if (stroke) {
-        masterTl.to(stroke, {
+        heroMasterTl.to(stroke, {
           opacity: 0.45,
           duration: 0.45,
           ease: 'power2.inOut'
@@ -179,8 +263,8 @@ function initApp() {
       }
     });
 
-    // Specular light sweep across completed PORTFOLIO at 2.65s
-    masterTl.to('.hero-char-fill', {
+    // Specular light sweep across completed CREATOR at 2.65s
+    heroMasterTl.to('.hero-char-fill', {
       filter: 'brightness(1.5)',
       duration: 0.22,
       stagger: 0.05,
@@ -191,7 +275,7 @@ function initApp() {
 
     // 3. Person Portrait Entrance (starts at 2.9s, finishes at 4.3s)
     if (heroCutout) {
-      masterTl.to(heroCutout, {
+      heroMasterTl.to(heroCutout, {
         y: 0,
         scale: 1,
         opacity: 1,
@@ -202,7 +286,7 @@ function initApp() {
 
     // 4. "Hello I'm" Entrance (starts at 4.3s)
     if (heroGreeting) {
-      masterTl.to(heroGreeting, {
+      heroMasterTl.to(heroGreeting, {
         x: 0,
         opacity: 1,
         filter: 'blur(0px)',
@@ -214,7 +298,7 @@ function initApp() {
     // 5. The Name Letter-by-Letter Reveal with Motion Blur (starts at 4.9s)
     // Line 1: "MUHAMMAD"
     if (nameCharsL1.length) {
-      masterTl.to(nameCharsL1, {
+      heroMasterTl.to(nameCharsL1, {
         x: 0,
         opacity: 1,
         filter: 'blur(0px)',
@@ -226,7 +310,7 @@ function initApp() {
 
     // Line 2: "HASHIR"
     if (nameCharsL2.length) {
-      masterTl.to(nameCharsL2, {
+      heroMasterTl.to(nameCharsL2, {
         x: 0,
         opacity: 1,
         filter: 'blur(0px)',
@@ -238,7 +322,7 @@ function initApp() {
 
     // 6. Professional Title Pill ("✦ AI CONTENT CREATOR") (starts at 6.3s)
     if (heroPill) {
-      masterTl.to(heroPill, {
+      heroMasterTl.to(heroPill, {
         opacity: 1,
         scale: 1,
         duration: 0.45,
@@ -247,7 +331,7 @@ function initApp() {
     }
 
     if (heroPillSparkle) {
-      masterTl.to(heroPillSparkle, {
+      heroMasterTl.to(heroPillSparkle, {
         scale: 1,
         opacity: 1,
         duration: 0.45,
@@ -256,7 +340,7 @@ function initApp() {
     }
 
     if (pillChars.length) {
-      masterTl.to(pillChars, {
+      heroMasterTl.to(pillChars, {
         x: 0,
         opacity: 1,
         filter: 'blur(0px)',
@@ -268,7 +352,7 @@ function initApp() {
 
     // 7. Capability Bullet Items (enters one by one at 7.2s, 7.6s, 8.0s, 8.4s)
     if (heroBullets.length) {
-      masterTl.to(heroBullets, {
+      heroMasterTl.to(heroBullets, {
         x: 0,
         opacity: 1,
         filter: 'blur(0px)',
@@ -280,7 +364,7 @@ function initApp() {
 
     // 8. Social Dock Buttons Cascade (starts at 8.6s)
     if (heroDockBtns.length) {
-      masterTl.to(heroDockBtns, {
+      heroMasterTl.to(heroDockBtns, {
         x: 0,
         opacity: 1,
         duration: 0.65,
@@ -288,8 +372,10 @@ function initApp() {
         ease: 'back.out(1.5)'
       }, 8.6);
     }
+  }
 
-    // Interactive Mouse Parallax (desktop viewports > 900px)
+  // Interactive Mouse Parallax (desktop viewports > 900px, initialized once)
+  function initHeroParallax() {
     if (window.innerWidth > 900) {
       window.addEventListener('mousemove', (e) => {
         const normX = (e.clientX / window.innerWidth) - 0.5;
@@ -885,7 +971,12 @@ function initApp() {
   // -----------------------------------------------------------------
   // Initialize All Motion Systems
   // -----------------------------------------------------------------
-  initHeroAnimations();
+  initHeroParallax();
+  if (window.scrollY < 300) {
+    playHeroAnimation(true);
+  } else {
+    hasLeftHero = true;
+  }
   initTypographyAnimations();
   initAboutAnimations();
   initServicesAnimations();
