@@ -145,12 +145,13 @@ function initApp() {
     if (heroNav) masterTl.to(heroNav, { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.4);
     if (heroSideTag) masterTl.to(heroSideTag, { x: 0, opacity: 0.9, duration: 0.9, ease: 'power2.out' }, 0.6);
 
-    // 2. PORTFOLIO Typography Left-to-Right Letter Tracing (0.0s - 2.7s in video)
-    // 9 letters: P O R T F O L I O. Stagger ~0.28s per letter
+    // 2. CREATOR Typography Left-to-Right Letter Tracing (0.0s - 2.7s in video)
+    // 7 letters: C R E A T O R. Stagger ~0.34s per letter for exact reference video pace
     heroChars.forEach((char, idx) => {
       const stroke = char.querySelector('.hero-char-stroke');
       const fill = char.querySelector('.hero-char-fill');
-      const letterStartTime = 0.1 + (idx * 0.28);
+      const letterSpacing = heroChars.length <= 7 ? 0.34 : 0.28;
+      const letterStartTime = 0.1 + (idx * letterSpacing);
 
       if (stroke) {
         masterTl.to(stroke, {
