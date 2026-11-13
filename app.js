@@ -160,11 +160,17 @@ function initApp() {
     // Respect reduced-motion accessibility preference (Requirement 10)
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       if (heroMasterTl) heroMasterTl.kill();
-      gsap.set(['.hero-native-header', '.hero-person-wrap', '.hero-script-greeting', 
+      gsap.set(['.hero-native-header', '.hero-laptop', '.laptop-ambient-glow', '.screen-red-glow',
+                '.hero-breakout-character', '.screen-character-wrap', '.hero-script-greeting', 
                 '.name-char', '.hero-intro-pill', '.hero-pill-sparkle', '.pill-char', 
                 '.bullet-item', '.hero-dock-btn', '.hero-dock-status'], {
         opacity: 1, x: 0, y: 0, scale: 1, filter: 'none'
       });
+      gsap.set('.hero-breakout-character', {
+        scale: 0.90, y: -25, z: 100,
+        filter: 'drop-shadow(0 0 25px rgba(239, 68, 68, 0.48)) drop-shadow(0 22px 45px rgba(0, 0, 0, 0.95))'
+      });
+      gsap.set('.screen-character-wrap', { opacity: 0.25, filter: 'brightness(0.35)' });
       document.querySelectorAll('.hero-char').forEach(char => {
         const stroke = char.querySelector('.hero-char-stroke');
         const fill = char.querySelector('.hero-char-fill');
@@ -175,7 +181,11 @@ function initApp() {
     }
 
     const heroChars = document.querySelectorAll('.hero-char');
-    const heroCutout = document.querySelector('.hero-person-wrap');
+    const heroLaptop = document.querySelector('.hero-laptop');
+    const heroLaptopGlow = document.querySelector('.laptop-ambient-glow');
+    const heroScreenGlow = document.querySelector('.screen-red-glow');
+    const heroScreenChar = document.querySelector('.screen-character-wrap');
+    const heroBreakoutChar = document.querySelector('.hero-breakout-character');
     const heroNav = document.querySelector('.hero-native-header');
     const heroGreeting = document.querySelector('.hero-script-greeting');
     const nameCharsL1 = document.querySelectorAll('.name-line-1 .name-char');
@@ -200,13 +210,27 @@ function initApp() {
     if (heroMasterTl) {
       heroMasterTl.kill();
     }
-    gsap.killTweensOf(['.hero-native-header', '.hero-person-wrap', '.hero-script-greeting',
-      '.name-char', '.hero-intro-pill', '.hero-pill-sparkle', '.pill-char',
-      '.bullet-item', '.hero-dock-btn', '.hero-dock-status', '.hero-char-stroke', '.hero-char-fill']);
+    gsap.killTweensOf(['.hero-native-header', '.hero-laptop', '.laptop-ambient-glow',
+      '.screen-red-glow', '.screen-character-wrap', '.hero-breakout-character',
+      '.hero-script-greeting', '.name-char', '.hero-intro-pill', '.hero-pill-sparkle',
+      '.pill-char', '.bullet-item', '.hero-dock-btn', '.hero-dock-status',
+      '.hero-char-stroke', '.hero-char-fill']);
 
-    // Reset initial states cleanly
+    // Reset initial states cleanly (Stationary laptop with character displayed inside screen)
     if (heroNav) gsap.set(heroNav, { y: -20, opacity: 0 });
-    if (heroCutout) gsap.set(heroCutout, { y: 55, scale: 0.95, opacity: 0 });
+    if (heroLaptop) gsap.set(heroLaptop, { y: 22, scale: 0.97, opacity: 0 });
+    if (heroLaptopGlow) gsap.set(heroLaptopGlow, { opacity: 0, scale: 0.95 });
+    if (heroScreenGlow) gsap.set(heroScreenGlow, { opacity: 0 });
+    if (heroScreenChar) gsap.set(heroScreenChar, { opacity: 1, filter: 'brightness(0.96) contrast(1.04)' });
+    if (heroBreakoutChar) {
+      gsap.set(heroBreakoutChar, {
+        opacity: 0,
+        scale: 0.42,
+        y: -110,
+        z: 0,
+        filter: 'drop-shadow(0 0 0px transparent)'
+      });
+    }
     if (heroGreeting) gsap.set(heroGreeting, { x: -24, opacity: 0, filter: 'blur(5px)' });
     if (nameCharsL1.length) gsap.set(nameCharsL1, { x: -14, opacity: 0, filter: 'blur(4px)' });
     if (nameCharsL2.length) gsap.set(nameCharsL2, { x: -14, opacity: 0, filter: 'blur(4px)' });
@@ -226,8 +250,9 @@ function initApp() {
     // Master Timeline matching reference video sequence & speed
     heroMasterTl = gsap.timeline({ delay: 0.1 });
 
-    // 1. Top Navbar fade in softly (0.4s)
+    // 1. Top Navbar fade in softly (0.4s) & Stationary Laptop grounding (0.3s)
     if (heroNav) heroMasterTl.to(heroNav, { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out' }, 0.4);
+    if (heroLaptop) heroMasterTl.to(heroLaptop, { y: 0, scale: 1, opacity: 1, duration: 1.0, ease: 'power2.out' }, 0.3);
 
     // 2. CREATOR Typography Left-to-Right Letter Tracing (0.0s - 2.7s in video)
     // 7 letters: C R E A T O R. Stagger ~0.34s per letter for exact reference video pace
@@ -273,15 +298,39 @@ function initApp() {
       ease: 'power1.inOut'
     }, 2.65);
 
-    // 3. Person Portrait Entrance (starts at 2.9s, finishes at 4.3s)
-    if (heroCutout) {
-      heroMasterTl.to(heroCutout, {
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        duration: 1.4,
+    // Subtle Red Cinematic Glow around laptop screen and ambient field (starts at 2.35s)
+    if (heroLaptopGlow) heroMasterTl.to(heroLaptopGlow, { opacity: 1, duration: 1.1, ease: 'power2.out' }, 2.35);
+    if (heroScreenGlow) heroMasterTl.to(heroScreenGlow, { opacity: 1, duration: 0.95, ease: 'power2.out' }, 2.45);
+    if (heroLaptopGlow) heroMasterTl.to(heroLaptopGlow, { scale: 1.05, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut' }, 3.5);
+
+    // 3. Cinematic 3D Screen Breakout Emergence (starts at 2.85s, finishes at 4.3s)
+    // The character gradually emerges from the laptop screen using CSS 3D transforms, scale and layered positioning
+    if (heroBreakoutChar) {
+      heroMasterTl.set(heroBreakoutChar, { opacity: 1 }, 2.85);
+      heroMasterTl.to(heroBreakoutChar, {
+        scale: 0.90,
+        y: -25,
+        z: 100,
+        duration: 1.45,
+        ease: 'power3.out'
+      }, 2.85);
+
+      // Subtle red rim lighting and deep shadow wrapping around the emerging silhouette
+      heroMasterTl.to(heroBreakoutChar, {
+        filter: 'drop-shadow(0 0 25px rgba(239, 68, 68, 0.48)) drop-shadow(0 22px 45px rgba(0, 0, 0, 0.95))',
+        duration: 1.35,
         ease: 'power2.out'
-      }, 2.9);
+      }, 2.95);
+    }
+
+    // Inside screen, the character image dims as physical persona steps out into foreground
+    if (heroScreenChar) {
+      heroMasterTl.to(heroScreenChar, {
+        opacity: 0.2,
+        filter: 'brightness(0.35)',
+        duration: 1.2,
+        ease: 'power2.out'
+      }, 3.0);
     }
 
     // 4. "Hello I'm" Entrance (starts at 4.3s)
@@ -381,12 +430,24 @@ function initApp() {
         const normX = (e.clientX / window.innerWidth) - 0.5;
         const normY = (e.clientY / window.innerHeight) - 0.5;
 
-        gsap.to('.hero-person-img', {
-          x: normX * 16,
-          y: normY * 10,
+        // Foreground emerging character 3D parallax & subtle tilt
+        gsap.to('.hero-breakout-character', {
+          x: normX * 18,
+          y: -25 + (normY * 10),
+          rotateY: normX * 3.5,
+          rotateX: -normY * 2.5,
           duration: 1,
           ease: 'power2.out'
         });
+        // Stationary background laptop subtle parallax (creates tangible depth contrast)
+        gsap.to('.hero-laptop', {
+          x: normX * 6,
+          y: normY * 4,
+          rotateY: normX * 1.5,
+          duration: 1.2,
+          ease: 'power2.out'
+        });
+        // CREATOR watermark in opposite parallax
         gsap.to('.hero-portfolio-typography', {
           x: -normX * 14,
           y: -normY * 8,
